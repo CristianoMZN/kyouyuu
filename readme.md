@@ -1,5 +1,3 @@
-Senha principal: ba6548tbsi
-
 # 🚀 Executando as Migrações
 cd application
 Para rodar as migrações pendentes:
@@ -32,3 +30,7 @@ vendor/bin/phinx create CreateTrackerTable
 
 # Criar migração para users
 vendor/bin/phinx create CreateUsersTable
+
+## Acessar o painel:
+- Usuário: `admin` Senha: `ba6548tbsi`
+- Usuário: `user` Senha: `ba6548tbsi`
