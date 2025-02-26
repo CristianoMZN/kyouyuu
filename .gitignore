@@ -1,0 +1,9 @@
+/application/lib
+/application/vendor
+/application/app/config
+/application/app/database
+/.vscode
+/.idea
+/.DS_Store
+/application/.env
+/application/phinx.php
