@@ -1,9 +1,10 @@
-/application/lib
-/application/vendor
-/application/app/config
-/application/app/database
+/app/lib
+/app/vendor
+/app/app/config
+/app/app/database
 /.vscode
 /.idea
 /.DS_Store
-/application/.env
-/application/phinx.php
+/app/.env
+/app/phinx.php
+kubeconfig.yml
