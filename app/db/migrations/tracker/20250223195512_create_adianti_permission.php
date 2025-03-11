@@ -246,12 +246,10 @@ final class CreateAdiantiPermission extends AbstractMigration
                             );
 
             --- Insert units
-            INSERT INTO system_unit (id, name, connection_name) values ( (SELECT coalesce(max(id),0)+1 FROM system_unit b), 'Unit A', 'unit_a');
-            INSERT INTO system_unit (id, name, connection_name) values ( (SELECT coalesce(max(id),0)+1 FROM system_unit b), 'Unit B', 'unit_b');
+            INSERT INTO system_unit (id, name, connection_name) values ( (SELECT coalesce(max(id),0)+1 FROM system_unit b), 'Principal', 'unit_a');
 
             --- Insert roles
             INSERT INTO system_role (id, name, custom_code) values ( (SELECT coalesce(max(id),0)+1 FROM system_role b), 'Role A', '');
-            INSERT INTO system_role (id, name, custom_code) values ( (SELECT coalesce(max(id),0)+1 FROM system_role b), 'Role B', '');
 
 
             --- Insert users in groups
@@ -263,9 +261,7 @@ final class CreateAdiantiPermission extends AbstractMigration
 
             --- Insert users in units
             INSERT INTO system_user_unit VALUES ( (SELECT coalesce(max(id),0)+1 FROM system_user_unit b), (select id from system_users where login='admin'), 1);
-            INSERT INTO system_user_unit VALUES ( (SELECT coalesce(max(id),0)+1 FROM system_user_unit b), (select id from system_users where login='admin'), 2);
             INSERT INTO system_user_unit VALUES ( (SELECT coalesce(max(id),0)+1 FROM system_user_unit b), (select id from system_users where login='user'), 1);
-            INSERT INTO system_user_unit VALUES ( (SELECT coalesce(max(id),0)+1 FROM system_user_unit b), (select id from system_users where login='user'), 2);
 
 
             --- Insert programs in groups
