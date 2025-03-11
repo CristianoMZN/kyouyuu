@@ -1,5 +1,3 @@
-Senha principal: ba6548tbsi
-
 # 🚀 Executando as Migrações
 cd application
 Para rodar as migrações pendentes:
