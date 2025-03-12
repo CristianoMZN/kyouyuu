@@ -32,8 +32,6 @@ final class CreatePeerTable extends AbstractMigration
                 ->addColumn('status', 'string', ['limit' => 255])
                 ->addColumn('last_announce', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
                 ->addColumn('file', 'integer', ['signed' => false])
-                ->addForeignKey('owner', 'user', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
-                ->addForeignKey('file', 'file', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
                 ->addIndex(['owner'])
                 ->addIndex(['hash'], ['unique' => true])
                 ->create();

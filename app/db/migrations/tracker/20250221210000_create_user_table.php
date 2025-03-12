@@ -44,7 +44,7 @@ final class CreateUserTable extends AbstractMigration
                 ->addColumn('last_isp', 'string', ['limit' => 255])
                 ->addColumn('created_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
                 ->addColumn('updated_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP', 'update' => 'CURRENT_TIMESTAMP'])
-                ->addForeignKey('system_user_id', 'system_user', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
+                ->addForeignKey('system_user_id', 'system_users', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE'])
                 ->create();
     }
 }

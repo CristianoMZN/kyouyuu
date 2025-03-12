@@ -32,7 +32,6 @@ final class CreateFileTable extends AbstractMigration
                 ->addColumn('description', 'text', ['null' => true])
                 ->addColumn('created_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
                 ->addColumn('updated_at', 'datetime', ['default' => 'CURRENT_TIMESTAMP', 'update' => 'CURRENT_TIMESTAMP'])
-                ->addForeignKey('owner', 'user', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION'])
                 ->addIndex(['owner'])
                 ->addIndex(['hash'], ['unique' => true])
                 ->create();

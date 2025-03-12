@@ -21,8 +21,7 @@ final class CreateAdiantiCommunication extends AbstractMigration
      */
     public function change(): void
     {
-        $this->execute("--- Create system_notification table
-            CREATE TABLE system_notification (
+        $this->execute("CREATE TABLE system_notification (
                 id int PRIMARY KEY NOT NULL,
                 system_user_id int,
                 system_user_to_id int,
@@ -34,8 +33,6 @@ final class CreateAdiantiCommunication extends AbstractMigration
                 icon varchar(100),
                 checked char(1)
             );
-
-            --- Create system_message table
             CREATE TABLE system_message (
                 id int PRIMARY KEY NOT NULL,
                 system_user_id int,
@@ -49,14 +46,14 @@ final class CreateAdiantiCommunication extends AbstractMigration
                 attachments text
             );
 
-            --- Create system_message_tag table
+            
             CREATE TABLE system_message_tag (
                 id int PRIMARY KEY NOT NULL,
                 system_message_id int not null REFERENCES system_message (id),
                 tag varchar(256) not null
             );
 
-            --- Create system_folder table
+            
             CREATE TABLE system_folder (
                 id int PRIMARY KEY NOT NULL,
                 system_user_id int,
@@ -66,21 +63,21 @@ final class CreateAdiantiCommunication extends AbstractMigration
                 system_folder_parent_id int REFERENCES system_folder (id)
             );
 
-            --- Create system_folder_user table
+            
             CREATE TABLE system_folder_user (
                 id int PRIMARY KEY NOT NULL,
                 system_folder_id int REFERENCES system_folder(id),
                 system_user_id int
             );
 
-            --- Create system_folder_group table
+            
             CREATE TABLE system_folder_group (
                 id int PRIMARY KEY NOT NULL,
                 system_folder_id int REFERENCES system_folder(id),
                 system_group_id int
             );
 
-            --- Create system_document table
+            
             CREATE TABLE system_document (
                 id int PRIMARY KEY NOT NULL,
                 system_user_id int,
@@ -95,35 +92,35 @@ final class CreateAdiantiCommunication extends AbstractMigration
                 content_type varchar(100)
             );
 
-            --- Create system_document_user table
+            
             CREATE TABLE system_document_user (
                 id int PRIMARY KEY NOT NULL,
                 document_id int REFERENCES system_document(id),
                 system_user_id int
             );
 
-            --- Create system_document_group table
+            
             CREATE TABLE system_document_group (
                 id int PRIMARY KEY NOT NULL,
                 document_id int REFERENCES system_document(id),
                 system_group_id int
             );
 
-            --- Create system_document_bookmark table
+            
             CREATE TABLE system_document_bookmark (
                 id int PRIMARY KEY NOT NULL,
                 system_user_id int,
                 system_document_id int REFERENCES system_document(id)
             );
 
-            --- Create system_folder_bookmark table
+            
             CREATE TABLE system_folder_bookmark (
                 id int PRIMARY KEY NOT NULL,
                 system_user_id int,
                 system_folder_id int REFERENCES system_folder(id)
             );
 
-            --- Create system_post table
+            
             CREATE TABLE system_post (
                 id int PRIMARY KEY NOT NULL,
                 system_user_id int,
@@ -135,21 +132,21 @@ final class CreateAdiantiCommunication extends AbstractMigration
                 active char(1) default 'Y' not null
             );
 
-            --- Create system_post_share_group table
+            
             CREATE TABLE system_post_share_group (
                 id int PRIMARY KEY NOT NULL,
                 system_group_id int,
                 system_post_id int NOT NULL REFERENCES system_post (id)
             );
 
-            --- Create system_post_tag table
+            
             CREATE TABLE system_post_tag (
                 id int PRIMARY KEY NOT NULL,
                 system_post_id int not null REFERENCES system_post (id),
                 tag varchar(256) not null
             );
 
-            --- Create system_post_comment table
+            
             CREATE TABLE system_post_comment (
                 id int PRIMARY KEY NOT NULL,
                 comment text not NULL,
@@ -158,7 +155,7 @@ final class CreateAdiantiCommunication extends AbstractMigration
                 created_at varchar(20)
             );
 
-            --- Create system_post_like table
+            
             CREATE TABLE system_post_like (
                 id int PRIMARY KEY NOT NULL,
                 system_user_id int,
@@ -166,7 +163,7 @@ final class CreateAdiantiCommunication extends AbstractMigration
                 created_at varchar(20)
             );
 
-            --- Create system_wiki_page table
+            
             CREATE TABLE system_wiki_page (
                 id int PRIMARY KEY NOT NULL,
                 system_user_id int,
@@ -180,21 +177,21 @@ final class CreateAdiantiCommunication extends AbstractMigration
                 updated_by int
             );
 
-            --- Create system_wiki_tag table
+            
             CREATE TABLE system_wiki_tag (
                 id int PRIMARY KEY NOT NULL,
                 system_wiki_page_id int not null REFERENCES system_wiki_page (id),
                 tag varchar(256) not null
             );
 
-            --- Create system_wiki_share_group table
+            
             CREATE TABLE system_wiki_share_group (
                 id int PRIMARY KEY NOT NULL,
                 system_group_id int,
                 system_wiki_page_id int not null REFERENCES system_wiki_page (id)
             );
 
-            --- Create system_schedule table
+            
             CREATE TABLE system_schedule (
                 id int PRIMARY KEY NOT NULL,
                 schedule_type char(1),
@@ -208,7 +205,7 @@ final class CreateAdiantiCommunication extends AbstractMigration
                 active char(1)
             );
 
-            --- Create indexes
+            
             CREATE INDEX sys_notification_user_id_idx ON system_notification(system_user_id);
             CREATE INDEX sys_notification_user_to_idx ON system_notification(system_user_to_id);
 

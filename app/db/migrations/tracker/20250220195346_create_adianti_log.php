@@ -21,9 +21,7 @@ final class CreateAdiantiLog extends AbstractMigration
      */
     public function change(): void
     {
-        $this->execute("
-            --- Create system_change_log table
-            CREATE TABLE system_change_log (
+        $this->execute("CREATE TABLE system_change_log (
                 id int PRIMARY KEY NOT NULL,
                 logdate varchar(20),
                 login varchar(256),
@@ -45,7 +43,7 @@ final class CreateAdiantiLog extends AbstractMigration
                 log_day varchar(2)
             );
 
-            --- Create system_sql_log table
+            
             CREATE TABLE system_sql_log (
                 id int PRIMARY KEY NOT NULL,
                 logdate varchar(20),
@@ -65,7 +63,7 @@ final class CreateAdiantiLog extends AbstractMigration
                 log_day varchar(2)
             );
 
-            --- Create system_access_log table
+            
             CREATE TABLE system_access_log (
                 id int PRIMARY KEY NOT NULL,
                 sessionid varchar(256),
@@ -80,7 +78,7 @@ final class CreateAdiantiLog extends AbstractMigration
                 impersonated_by varchar(200)
             );
 
-            --- Create system_request_log table
+            
             CREATE TABLE system_request_log (
                 id int PRIMARY KEY NOT NULL,
                 endpoint text,
@@ -103,7 +101,7 @@ final class CreateAdiantiLog extends AbstractMigration
                 request_duration int
             );
 
-            --- Create system_access_notification_log table
+            
             CREATE TABLE system_access_notification_log (
                 id int PRIMARY KEY NOT NULL,
                 login varchar(256),
@@ -112,7 +110,7 @@ final class CreateAdiantiLog extends AbstractMigration
                 login_time varchar(256)
             );
 
-            --- Create system_schedule_log table
+            
             CREATE TABLE system_schedule_log (
                 id int PRIMARY KEY NOT NULL,
                 logdate varchar(19),
@@ -123,7 +121,7 @@ final class CreateAdiantiLog extends AbstractMigration
                 message text
             );
 
-            --- Create indexes
+            
             CREATE INDEX sys_change_log_login_idx ON system_change_log(login);
             CREATE INDEX sys_change_log_date_idx ON system_change_log(logdate);
             CREATE INDEX sys_change_log_year_idx ON system_change_log(log_year);
