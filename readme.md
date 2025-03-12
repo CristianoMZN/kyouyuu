@@ -30,3 +30,6 @@ vendor/bin/phinx create CreateTrackerTable
 
 # Criar migração para users
 vendor/bin/phinx create CreateUsersTable
+
+
+docker exec -it php /bin/bash
