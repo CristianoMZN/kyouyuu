@@ -13,6 +13,9 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN pecl install xdebug memcached amqp \
     && docker-php-ext-enable xdebug memcached amqp
 
+# Instala Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # Cria diretório de sessões e define permissões
 RUN mkdir -p /var/lib/php/sessions && chown -R www-data:www-data /var/lib/php/sessions
 
