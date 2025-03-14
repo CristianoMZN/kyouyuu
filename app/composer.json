@@ -19,7 +19,8 @@
     "jfcherng/php-diff": "^6.16",
     "robmorgan/phinx": "^0.16.6",
     "ovh/ovh": "^3.5",
-    "christeredvartsen/php-bittorrent": "^2.0"
+    "christeredvartsen/php-bittorrent": "^2.0",
+    "aws/aws-sdk-php": "^3.342"
   },
   "config": {
     "preferred-install": {
