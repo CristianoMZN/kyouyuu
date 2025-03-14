@@ -7,4 +7,8 @@
 /.DS_Store
 /app/.env
 /app/phinx.php
+/app/tmp/*
+/app/logs/*
+/app/phinx.yml
+/app/composer.lock
 kubeconfig.yml
