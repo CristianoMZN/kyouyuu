@@ -8,8 +8,6 @@ vendor/bin/phinx migrate
 vendor/bin/phinx rollback -t 0
 ```
 
-
-
 ### Para ver o status das migrações:
 
 ```bash
@@ -31,5 +29,7 @@ vendor/bin/phinx create CreateTrackerTable
 # Criar migração para users
 vendor/bin/phinx create CreateUsersTable
 
+Senha do sistema:
+ba6548tbsi
 
 docker exec -it php /bin/bash
