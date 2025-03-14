@@ -19,13 +19,19 @@ class FilesList extends TPage
         TTransaction::open('tracker');
         $file_repository = new TRepository('File');
         $files = $file_repository->load();
-        
         TTransaction::close();
         $this->datagrid = new BootstrapDatagridWrapper(new TDataGrid);
         $this->datagrid->style = 'width:100%';
 
         $id     = new TDataGridColumn('id',    'ID',    'center', '10%');
         $name   = new TDataGridColumn('name',    'Name',    'center', '90%');
+        $edit_action   = new TDataGridAction(['FilesForm', 'onEdit'], ['id'=>'{id}']);
+        $delete_action = new TDataGridAction([$this, 'onDelete'], ['id'=>'{id}']);
+        $view_action   = new TDataGridAction(['FilesView', 'onShow'], ['id'=>'{id}']);
+        $this->datagrid->addAction($edit_action, 'Edit', 'fa:edit blue');
+        $this->datagrid->addAction($delete_action, 'Delete', 'fa:trash red');
+        $this->datagrid->addAction($view_action, 'View', 'fa:search green');
+
         $this->datagrid->addColumn($id);
         $this->datagrid->addColumn($name);
         $this->datagrid->createModel();
@@ -45,7 +51,33 @@ class FilesList extends TPage
 
         parent::add($vbox);
     }
-    
+    public function onDelete($param)
+    {
+        try{
+            TTransaction::open('tracker');
+            $object = new File($param['id']);
+            $object->delete();
+            TTransaction::close();
+            new TMessage('info', 'Registro deletado com sucesso', NULL, "Tudo certo!");
+            $this->onReload($param);
+        }catch(Exception $e){
+            new TMessage('error', $e->getMessage());
+            TTransaction::rollback();
+        }
+    }
+    public function onReload($param)
+    {
+        TTransaction::open('tracker');
+        $file_repository = new TRepository('File');
+        $files = $file_repository->load();
+        TTransaction::close();
+        $this->datagrid->clear();
+        $this->datagrid->addItems($files);
+    }
+    public function onShow($param)
+    {
+        $this->onReload($param);
+    }
     
 
 }
