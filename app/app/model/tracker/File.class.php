@@ -26,6 +26,7 @@ class File extends TRecord
         parent::addAttribute('size');
         parent::addAttribute('type');
         parent::addAttribute('cover');
+        parent::addAttribute('torrent');
         parent::addAttribute('description');
         parent::addAttribute('created_at');
         parent::addAttribute('updated_at');
@@ -35,6 +36,7 @@ class File extends TRecord
         $id = isset($id) ? $id : $this->id;
         
         File::where('id', '=', $this->id)->delete();
+        
         parent::delete($id);
     }
 }
